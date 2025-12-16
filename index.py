@@ -48,6 +48,7 @@ def get_new_release():
             # print(response.json())
             data = response.json()
             albums = data['albums']['items']
+            output=[]
             for album in albums:
                 info = {
                     'album_name':album['name'],
@@ -58,7 +59,10 @@ def get_new_release():
                     'spotify_url' : album['external_urls']['spotify'],
                     'album_image': album['images'][0]['url'] if album['images'] else None
                 }
-                print(json.dumps(info, indent=2))
+                a=json.dumps(info, indent=2)
+                output = output.append[a]
+            
+
     except Exception as e:
         print('Error in latest release data fetching',e)
 #
