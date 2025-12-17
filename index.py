@@ -48,7 +48,7 @@ def get_new_release():
             # print(response.json())
             data = response.json()
             albums = data['albums']['items']
-            output=[]
+            # output=[]
             for album in albums:
                 info = {
                     'album_name':album['name'],
@@ -59,8 +59,9 @@ def get_new_release():
                     'spotify_url' : album['external_urls']['spotify'],
                     'album_image': album['images'][0]['url'] if album['images'] else None
                 }
-                a=json.dumps(info, indent=2)
-                output = output.append[a]
+                with open("output.json",'a')as f:
+                    json.dump(info, indent=2)
+                
             
 
     except Exception as e:
